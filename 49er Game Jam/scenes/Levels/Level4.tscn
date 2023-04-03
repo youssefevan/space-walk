@@ -1,0 +1,134 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://scenes/GUI.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Launch.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Boundaries.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprites/backgrounds/bg_level4.png" type="Texture" id=4]
+[ext_resource path="res://scripts/World.gd" type="Script" id=5]
+[ext_resource path="res://scenes/Planet.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Station.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sprites/planets/planet4.png" type="Texture" id=8]
+[ext_resource path="res://scenes/Asteroid.tscn" type="PackedScene" id=9]
+[ext_resource path="res://sprites/planets/planet1.png" type="Texture" id=10]
+[ext_resource path="res://scenes/BlackHole.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=12]
+[ext_resource path="res://sprites/planets/planet5.png" type="Texture" id=13]
+
+[node name="Level4" type="Node2D"]
+script = ExtResource( 5 )
+numPlanets = 3
+
+[node name="BG" type="Sprite" parent="."]
+position = Vector2( 256, 144 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Boundaries" parent="." instance=ExtResource( 3 )]
+
+[node name="GUI" parent="." instance=ExtResource( 1 )]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Planets" type="Node" parent="."]
+
+[node name="Planet" parent="Planets" instance=ExtResource( 6 )]
+position = Vector2( 288, 224 )
+__meta__ = {
+"_edit_group_": true
+}
+gravity_field_radius = 40.0
+
+[node name="Sprite" parent="Planets/Planet" index="1"]
+texture = ExtResource( 8 )
+
+[node name="Planet3" parent="Planets" instance=ExtResource( 6 )]
+position = Vector2( 128, 104 )
+__meta__ = {
+"_edit_group_": true
+}
+gravity_field_radius = 70.0
+
+[node name="Sprite" parent="Planets/Planet3" index="1"]
+texture = ExtResource( 10 )
+
+[node name="Planet4" parent="Planets" instance=ExtResource( 6 )]
+position = Vector2( 392, 96 )
+__meta__ = {
+"_edit_group_": true
+}
+gravity_field_radius = 75.0
+
+[node name="Sprite" parent="Planets/Planet4" index="1"]
+texture = ExtResource( 13 )
+
+[node name="Asteroids" type="Node" parent="."]
+
+[node name="Asteroid" parent="Asteroids" instance=ExtResource( 9 )]
+position = Vector2( 192, 80 )
+
+[node name="Asteroid2" parent="Asteroids" instance=ExtResource( 9 )]
+position = Vector2( 200, 96 )
+
+[node name="Asteroid14" parent="Asteroids" instance=ExtResource( 9 )]
+position = Vector2( 80, 80 )
+
+[node name="Asteroid3" parent="Asteroids" instance=ExtResource( 9 )]
+position = Vector2( 184, 120 )
+
+[node name="Asteroid4" parent="Asteroids" instance=ExtResource( 9 )]
+position = Vector2( 72, 216 )
+
+[node name="Asteroid5" parent="Asteroids" instance=ExtResource( 9 )]
+position = Vector2( 112, 232 )
+
+[node name="Asteroid6" parent="Asteroids" instance=ExtResource( 9 )]
+position = Vector2( 80, 232 )
+
+[node name="Asteroid7" parent="Asteroids" instance=ExtResource( 9 )]
+position = Vector2( 232, 88 )
+
+[node name="Asteroid8" parent="Asteroids" instance=ExtResource( 9 )]
+position = Vector2( 256, 72 )
+
+[node name="Asteroid9" parent="Asteroids" instance=ExtResource( 9 )]
+position = Vector2( 280, 88 )
+
+[node name="Asteroid10" parent="Asteroids" instance=ExtResource( 9 )]
+position = Vector2( 360, 144 )
+
+[node name="Asteroid11" parent="Asteroids" instance=ExtResource( 9 )]
+position = Vector2( 336, 128 )
+
+[node name="Asteroid12" parent="Asteroids" instance=ExtResource( 9 )]
+position = Vector2( 432, 40 )
+
+[node name="Asteroid13" parent="Asteroids" instance=ExtResource( 9 )]
+position = Vector2( 232, 216 )
+
+[node name="BlackHole" parent="." instance=ExtResource( 11 )]
+position = Vector2( 208, 168 )
+
+[node name="BlackHole2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 288, 136 )
+
+[node name="Station" parent="." instance=ExtResource( 7 )]
+position = Vector2( 112, 200 )
+
+[node name="Launch" parent="." instance=ExtResource( 2 )]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Player" parent="." instance=ExtResource( 12 )]
+position = Vector2( 448, 224 )
+
+[connection signal="launch_vector" from="Launch" to="Player" method="_on_Launch_launch_vector"]
+[connection signal="fuel" from="Player" to="Launch" method="_on_Player_fuel"]
+[connection signal="fuel" from="Player" to="GUI" method="_on_Player_fuel"]
+
+[editable path="Planets/Planet"]
+[editable path="Planets/Planet3"]
+[editable path="Planets/Planet4"]

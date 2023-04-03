@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://sprites/backgrounds/bg_level5.png" type="Texture" id=1]
+[ext_resource path="res://gui/theme.tres" type="Theme" id=2]
+[ext_resource path="res://gui/level2.png" type="Texture" id=3]
+[ext_resource path="res://gui/Title.png" type="Texture" id=4]
+[ext_resource path="res://gui/level3.png" type="Texture" id=5]
+[ext_resource path="res://gui/level4.png" type="Texture" id=6]
+[ext_resource path="res://gui/level1.png" type="Texture" id=7]
+[ext_resource path="res://scripts/MainMenu.gd" type="Script" id=8]
+[ext_resource path="res://gui/level5.png" type="Texture" id=9]
+
+[node name="MainMenu" type="Control"]
+theme = ExtResource( 2 )
+script = ExtResource( 8 )
+
+[node name="BG" type="Sprite" parent="."]
+position = Vector2( 256, 144 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 192.0
+margin_top = 96.0
+margin_right = 320.0
+margin_bottom = 262.0
+theme = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Level 1" type="Button" parent="VBoxContainer"]
+margin_right = 128.0
+margin_bottom = 24.0
+icon = ExtResource( 7 )
+icon_align = 1
+
+[node name="Level 2" type="Button" parent="VBoxContainer"]
+margin_top = 28.0
+margin_right = 128.0
+margin_bottom = 52.0
+icon = ExtResource( 3 )
+icon_align = 1
+
+[node name="Level 3" type="Button" parent="VBoxContainer"]
+margin_top = 56.0
+margin_right = 128.0
+margin_bottom = 80.0
+icon = ExtResource( 5 )
+icon_align = 1
+
+[node name="Level 4" type="Button" parent="VBoxContainer"]
+margin_top = 84.0
+margin_right = 128.0
+margin_bottom = 108.0
+icon = ExtResource( 6 )
+icon_align = 1
+
+[node name="Level 5" type="Button" parent="VBoxContainer"]
+margin_top = 112.0
+margin_right = 128.0
+margin_bottom = 136.0
+icon = ExtResource( 9 )
+icon_align = 1
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 256, 64 )
+texture = ExtResource( 4 )
+
+[connection signal="button_down" from="VBoxContainer/Level 1" to="." method="_on_Level_1_button_down"]
+[connection signal="button_up" from="VBoxContainer/Level 1" to="." method="_on_Level_1_button_up"]
+[connection signal="button_down" from="VBoxContainer/Level 2" to="." method="_on_Level_2_button_down"]
+[connection signal="button_up" from="VBoxContainer/Level 2" to="." method="_on_Level_2_button_up"]
+[connection signal="button_down" from="VBoxContainer/Level 3" to="." method="_on_Level_3_button_down"]
+[connection signal="button_up" from="VBoxContainer/Level 3" to="." method="_on_Level_3_button_up"]
+[connection signal="button_down" from="VBoxContainer/Level 4" to="." method="_on_Level_4_button_down"]
+[connection signal="button_up" from="VBoxContainer/Level 4" to="." method="_on_Level_4_button_up"]
+[connection signal="button_down" from="VBoxContainer/Level 5" to="." method="_on_Level_5_button_down"]
+[connection signal="button_up" from="VBoxContainer/Level 5" to="." method="_on_Level_5_button_up"]
